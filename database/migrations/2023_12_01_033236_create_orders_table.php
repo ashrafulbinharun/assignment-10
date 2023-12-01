@@ -12,7 +12,7 @@ return new class extends Migration {
         Schema::create( 'orders', function ( Blueprint $table ) {
             $table->id();
             $table->unsignedBigInteger( 'product_id' );
-            $table->foreign( 'product_id' )->references( 'id' )->on( 'products' );
+            $table->foreign( 'product_id' )->references( 'id' )->on( 'products' )->restrictOnDelete()->cascadeOnUpdate();
             $table->integer( 'quantity' );
             $table->timestamp( 'created_at' )->useCurrent();
             $table->timestamp( 'updated_at' )->useCurrent()->useCurrentOnUpdate();
